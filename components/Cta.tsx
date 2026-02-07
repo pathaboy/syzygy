@@ -11,7 +11,7 @@ const Cta = () => {
   return (
     <div className="relative overflow-hidden rounded-lg">
       
-        <RippleButton onClick={scrollToContact} rippleColor="#ADD8E6">Let's Connect</RippleButton>
+        <RippleButton onClick={scrollToContact} rippleColor="#ADD8E6">Let's Talk</RippleButton>
   
       <BorderBeam colorFrom="#C9CCD6" colorTo="#C9CCD6" borderWidth={2} />
     </div>
