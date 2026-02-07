@@ -101,7 +101,7 @@ export default function Dubbing() {
       className="relative overflow-hidden py-20"
     >
       {/* Absolutely positioned emoji image on the left - with higher z-index */}
-      <div className="absolute left-0 top-10 z-20 pointer-events-none hidden md:block">
+      <div className="absolute left-0 top-0 max-sm:bottom-0 z-20 pointer-events-none hidden md:block">
         <img
           src="/assets/priyanshu-emoji.webp"
           alt="Priyanshu"
@@ -117,7 +117,7 @@ export default function Dubbing() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-4 text-center text-3xl font-semibold md:text-4xl"
+          className="mb-4 text-center px-2 text-3xl font-semibold md:text-4xl"
         >
           We also offer Dubbing and voice over services
         </motion.h2>
@@ -126,7 +126,7 @@ export default function Dubbing() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-12 max-w-2xl text-center text-sm opacity-70 md:text-base"
+          className="mx-auto mb-12 px-4 text-balance max-w-2xl text-center text-sm opacity-70 md:text-base"
         >
           A selection of our dubbing and voice over projects showcasing our
           dedication to quality and storytelling.

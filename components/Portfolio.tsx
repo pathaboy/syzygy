@@ -105,7 +105,7 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-12 max-w-2xl text-center text-sm opacity-70 md:text-base"
+          className="mx-auto mb-12 px-4 max-w-2xl text-center text-sm opacity-70 md:text-base"
         >
           A selection of our recent projects showcasing our dedication to
           quality and storytelling.
