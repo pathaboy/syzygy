@@ -119,18 +119,8 @@ export default function Dubbing() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 text-center px-2 text-3xl font-semibold md:text-4xl"
         >
-          We also offer Dubbing and voice over services
+          We also offer VO and Dubbing services
         </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-12 px-4 text-balance max-w-2xl text-center text-sm opacity-70 md:text-base"
-        >
-          A selection of our dubbing and voice over projects showcasing our
-          dedication to quality and storytelling.
-        </motion.p>
 
         {/* Auto-scrolling marquee with horizontal scroll option - behind emoji */}
         <motion.div

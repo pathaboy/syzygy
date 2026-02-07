@@ -11,7 +11,13 @@ export default function Header() {
       <div className="max-w-[1400px] mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="group">
-          <Image src="https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/logo.gif" alt="Logo" width={150} height={100} />
+          <Image
+            src="https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/logo.gif"
+            alt="Logo"
+            width={200}
+            height={150}
+            className="grayscale"
+          />
         </Link>
 
         {/* Right side: Theme Toggle + CTA */}

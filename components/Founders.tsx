@@ -5,13 +5,13 @@ import Image from "next/image";
 const founders = [
   {
     name: "Naveen Patha",
-    title: "Co-Founder / Brand and Direction",
+    title: "Co-Founder | Brand and Direction",
     image: "/assets/naveen-color.jpg",
     linkedin: "https://www.linkedin.com/in/naveen-patha",
   },
   {
     name: "Priyanshu Srivastava",
-    title: "Co-Founder / Design and Post Production",
+    title: "Co-Founder | Design and Post Production",
     image: "/assets/priyanshu-color.jpg",
     linkedin: "https://swarlok.vercel.app",
   },

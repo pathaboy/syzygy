@@ -38,7 +38,7 @@ export const ExpandableVideoCard: React.FC<Props> = ({
           type="button"
           onClick={() => setActive(true)}
           className="
-            relative group
+            relative group my-4
             w-full
             rounded-[16px]
             bg-[#1F2121]
