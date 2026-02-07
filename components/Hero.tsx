@@ -29,7 +29,7 @@ const Hero = () => {
       {!hideMorphText && <MorphingText texts={texts} />}
       {hideMorphText && (
         <h1 className="text-6xl text-center font-bold tracking-tighter md:text-5xl lg:text-8xl">
-          <AuroraText>Clarity&nbsp;</AuroraText> over <span className="italic uppercase">chaos </span>
+          <AuroraText>Clarity</AuroraText> over <span className="italic uppercase">chaos </span>
         </h1>
       )}
       <p className="text-center text-lg font-medium px-2 text-balance mt-4 max-w-2xl mx-auto">
