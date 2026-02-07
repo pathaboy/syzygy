@@ -83,9 +83,10 @@ export default function Workflow() {
     <section ref={ref} className="py-20 px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
         {/* Heading with letter staggering */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-4">
           <StaggeredText text="A Simple Workflow" />
         </h2>
+        <p className="text-center text-lg font-semibold mb-16 max-w-xl mx-auto">From a few videos to large ongoing batches, our workflow is designed to stay calm, consistent, and reliable as volume grows.</p>
 
         {/* Workflow Steps - Icons Row with flex wrap and labels on mobile */}
         <div className="relative py-4 mb-16">

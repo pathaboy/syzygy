@@ -32,9 +32,9 @@ const Hero = () => {
           Clarity over <AuroraText>chaos &nbsp;</AuroraText>
         </h1>
       )}
-      <p className="text-center text-lg font-medium mt-4 max-w-2xl mx-auto">
-        Syzygy provides video post production for training, instructional, and
-        process-driven content where clarity matters more than attention.
+      <p className="text-center text-lg font-medium px-2 text-balance mt-4 max-w-2xl mx-auto">
+        SYZYGY. Where raw footage meets the finish line. Reliable, fast, and
+        thoughtful video post-production for teams that ship content regularly.
       </p>
       <DraggableCards />
       <motion.button

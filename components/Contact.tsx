@@ -45,7 +45,7 @@ export default function Contact() {
   const socialLinks = [
     { name: "Instagram", url: "https://instagram.com/syzygy.teams" },
     { name: "Twitter", url: "https://x.com/syzygy_teams" },
-    { name: "Behance", url: "https://behance.net/syzygyteams" },
+    { name: "Linkedin", url: "https://www.linkedin.com/company/syzygystudio" },
   ];
 
   return (
@@ -65,10 +65,9 @@ export default function Contact() {
           For inquiries related to video post production, samples, or workflow
           alignment.
         </p>
-
-        {/* Contact Form */}
+{/* 
         <form onSubmit={handleSubmit} className="mb-12 space-y-6">
-          {/* Email Input */}
+          
           <div className="relative">
             <input
               type="email"
@@ -82,7 +81,7 @@ export default function Contact() {
             />
           </div>
 
-          {/* Message Textarea */}
+          
           <div className="relative">
             <textarea
               required
@@ -96,7 +95,7 @@ export default function Contact() {
             />
           </div>
 
-          {/* Submit Button */}
+         
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
@@ -107,18 +106,20 @@ export default function Contact() {
             {status === "success" && "Message Sent ✓"}
             {status === "error" && "Failed. Try Again"}
           </button>
-        </form>
+        </form> 
+        */}
+
 
         {/* Email Display */}
         <div className="text-center mb-8">
           <p className="text-xs uppercase tracking-wider opacity-60 mb-2">
-            Or email directly
+            Email to
           </p>
           <a
-            href="mailto:hi@syzygy.co"
+            href="mailto:syzygy.teams@gmail.com"
             className="text-lg md:text-xl font-medium hover:opacity-70 transition-opacity duration-300"
           >
-            hi@syzygy.co
+            syzygy.teams@gmail.com
           </a>
         </div>
 

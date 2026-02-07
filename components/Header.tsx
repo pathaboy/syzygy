@@ -7,11 +7,11 @@ import Cta from "./Cta";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 py-6 px-6 md:px-12 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 backdrop-blur-sm">
       <div className="max-w-[1400px] mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="group">
-          <Image src="/assets/logo.png" alt="Logo" width={100} height={100} />
+          <Image src="https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/logo.gif" alt="Logo" width={150} height={100} />
         </Link>
 
         {/* Right side: Theme Toggle + CTA */}

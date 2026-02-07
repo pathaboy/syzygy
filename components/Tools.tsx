@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 
 const tools = [
   { name: "Adobe Premiere Pro", category: "Editing" },
-  { name: "After Effects", category: "Motion Graphics" },
-  { name: "DaVinci Resolve", category: "Color Grading" },
+  { name: "Adobe After Effects", category: "Motion Graphics" },
+  { name: "Adobe Illustrator", category: "Design" },
+  { name: "Adobe Photoshop", category: "Design" },
   { name: "Final Cut Pro", category: "Editing" },
+  { name: "Avid Media Composer", category: "Editing" },
 ];
 
 // Simple icon placeholder component

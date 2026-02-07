@@ -7,6 +7,7 @@ import Tools from "@/components/Tools"
 import Workflow from "@/components/Workflow"
 import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
+import Dubbing from "@/components/Dubbing"
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Workflow />
       <Tools />
       <Portfolio />
+      <Dubbing />
       {/* <Testimonials /> */}
       <Founders />
       <Contact />

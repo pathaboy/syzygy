@@ -14,7 +14,7 @@ export default function Footer() {
 
             className="flex flex-col items-center md:items-start gap-3"
           >
-            <Image src={"/assets/logo.png"} alt="Logo" width={100} height={100} />
+            <Image src="https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/logo.gif" alt="Logo" width={150} height={100} />
           </div>
 
           {/* Copyright and Details */}
