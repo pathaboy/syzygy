@@ -1,23 +1,52 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const tools = [
-  { name: "Adobe Premiere Pro", category: "Editing" },
-  { name: "Adobe After Effects", category: "Motion Graphics" },
-  { name: "Adobe Illustrator", category: "Design" },
-  { name: "Adobe Photoshop", category: "Design" },
-  { name: "Final Cut Pro", category: "Editing" },
-  { name: "Avid Media Composer", category: "Editing" },
+  {
+    name: "Adobe Premiere Pro",
+    category: "Editing",
+    icon: "/assets/adobe-premier.png",
+  },
+  {
+    name: "Adobe After Effects",
+    category: "Motion Graphics",
+    icon: "/assets/after-effects.png",
+  },
+  {
+    name: "Adobe Illustrator",
+    category: "Design",
+    icon: "/assets/adobe-illustrator.png",
+  },
+  {
+    name: "Adobe Photoshop",
+    category: "Design",
+    icon: "/assets/adobe-photoshop.png",
+  },
+  {
+    name: "Final Cut Pro",
+    category: "Editing",
+    icon: "/assets/final-cut-pro.png",
+  },
+  {
+    name: "Avid Media Composer",
+    category: "Editing",
+    icon: "/assets/avid.png",
+  },
 ];
 
-// Simple icon placeholder component
-function ToolIcon({ name }: { name: string }) {
-  const initial = name.charAt(0);
-
+// Tool icon component with actual icons
+function ToolIcon({ name, icon }: { name: string; icon: string }) {
   return (
-    <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
-      <span className="text-sm font-semibold opacity-60">{initial}</span>
+    <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center overflow-hidden p-1.5">
+      <Image
+        src={icon}
+        alt={name}
+        width={40}
+        height={40}
+        className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+      />
     </div>
   );
 }
@@ -49,7 +78,7 @@ function MarqueeRow({ items }: { items: typeof tools }) {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             {/* Tool Icon */}
-            <ToolIcon name={tool.name} />
+            <ToolIcon name={tool.name} icon={tool.icon} />
 
             {/* Tool Info */}
             <div className="flex flex-col">
