@@ -2,167 +2,207 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExpandableVideoCard } from "./VideoCard";
+import { WavyBackground } from "./ui/wavy-background";
+import { X } from "lucide-react";
 
-const portfolioItems = [
+// YouTube-style Video Card Component
+function YouTubeVideoCard({
+  videoUrl,
+  thumbnail,
+  title,
+}: {
+  videoUrl: string;
+  thumbnail: string;
+  title: string;
+}) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <>
+      <motion.div
+        className="flex flex-col gap-3 cursor-pointer group"
+        whileHover={{ scale: 1.05, y: -2 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        onClick={() => setIsModalOpen(true)}
+      >
+        {/* Video Thumbnail */}
+        <div className="relative aspect-video rounded-lg overflow-hidden border border-foreground/10 bg-foreground/[0.02]">
+          <video
+            src={videoUrl}
+            poster={thumbnail}
+            className="w-full h-full object-cover"
+            muted
+            playsInline
+          />
+          {/* Play overlay */}
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">
+              <div className="w-0 h-0 border-l-[12px] border-l-black border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1" />
+            </div>
+          </div>
+        </div>
+
+        {/* Video Title */}
+        <div className="px-1">
+          <h4 className="text-sm font-semibold line-clamp-2 group-hover:opacity-80 transition-opacity">
+            {title}
+          </h4>
+        </div>
+      </motion.div>
+
+      {/* Video Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <X size={32} />
+          </button>
+          <div
+            className="relative max-w-5xl w-full aspect-video"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              src={videoUrl}
+              controls
+              autoPlay
+              className="w-full h-full rounded-lg"
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+const featuredVideos = [
   {
     id: 1,
-    title: "Data Protection Sample",
-    description:
-      "Professional video editing showcasing data protection concepts",
+    title: "All Male Characters (Fevicol Ad)",
     videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/data-protection-sample.mp4",
+      "https://pub-f1f1657027f947e2ab76b33dcfab6b53.r2.dev/Dubbing/lv_0_20250409220713.mp4",
     thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/data-protection-sample.mp4",
+      "https://pub-f1f1657027f947e2ab76b33dcfab6b53.r2.dev/Thumbnail%20Images/Screenshot%202025-04-16%20235048.png",
   },
   {
     id: 2,
-    title: "Honey Bee Learning Sample",
-    description: "Educational content production for e-learning platforms",
+    title: "Paresh Rawal (Hungama) Hindi",
     videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/honey-bee-learning-sample.mp4",
+      "https://pub-f1f1657027f947e2ab76b33dcfab6b53.r2.dev/Dubbing/lv_0_20250409231608.mp4",
     thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/honey-bee-learning-sample.mp4",
+      "https://pub-f1f1657027f947e2ab76b33dcfab6b53.r2.dev/Thumbnail%20Images/Screenshot%202025-04-16%20235248.png",
   },
   {
     id: 3,
-    title: "Michael Jackson Sample",
-    description: "High-quality video post-production and editing",
+    title: "Mickey Mouse English",
     videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/michael-jackson-sample.mp4",
+      "https://pub-f1f1657027f947e2ab76b33dcfab6b53.r2.dev/Dubbing/lv_0_20250411085123.mp4",
     thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/michael-jackson-sample.mp4",
-  },
-  {
-    id: 4,
-    title: "Money Reel Sample",
-    description: "Creative reel production and visual storytelling",
-    videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/money-reel-sample.mp4",
-    thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/money-reel-sample.mp4",
-  },
-  {
-    id: 5,
-    title: "Silent nation",
-    description: "Silent nation",
-    videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/silent-nation-sample.mp4",
-    thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/silent-nation-sample.mp4",
-  },
-  {
-    id: 6,
-    title: "tere hawaale",
-    description: "tere hawaale",
-    videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/tere-hawale.mp4",
-    thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/tere-hawale.mp4",
-  },
-  {
-    id: 7,
-    title: "When party is over",
-    description: "When party is over",
-    videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/when-party-over-sample.mp4",
-    thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/when-party-over-sample.mp4",
-  },
-  {
-    id: 8,
-    title: "Lukka chuppi",
-    description: "Lukka chuppi",
-    videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/lukka-chuppi-sample.mp4",
-    thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/lukka-chuppi-sample.mp4",
-  },
-  {
-    id: 9,
-    title: "Abhi tujh me kabhi",
-    description: "Abhi tujh me kabhi",
-    videoUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/abhi-mujhe-me-kabhi-sample.mp4",
-    thumbnail:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/abhi-mujhe-me-kabhi-sample.mp4",
+      "https://pub-f1f1657027f947e2ab76b33dcfab6b53.r2.dev/Thumbnail%20Images/Screenshot%202025-04-16%20235336.png",
   },
 ];
 
 export default function Dubbing() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section
-      id="scrollTargetId"
-      ref={ref}
-      className="relative overflow-hidden py-20"
+    <WavyBackground
+      containerClassName="relative overflow-hidden py-16"
+      className="w-full"
+      // colors={["#1a1a1a", "#2d2d2d", "#404040", "#525252", "#666666"]}
+      waveWidth={10}
+      backgroundFill="transparent"
+      blur={10}
+      speed="fast"
+      waveOpacity={0.3}
     >
-      {/* Absolutely positioned emoji image on the left - with higher z-index */}
-      <div className="absolute left-0 top-0 max-sm:bottom-0 z-20 pointer-events-none hidden md:block">
-        <img
-          src="/assets/priyanshu-emoji.webp"
-          alt="Priyanshu"
-          width={150}
-          height={150}
-          className="rounded-full"
-        />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl">
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-4 text-center px-2 text-3xl font-semibold md:text-4xl"
-        >
-          We also offer VO and Dubbing services
-        </motion.h2>
-
-        {/* Auto-scrolling marquee with horizontal scroll option - behind emoji */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative overflow-x-auto overflow-y-hidden scrollbar-thin scrollbar-thumb-[#C9CCD6]/30 scrollbar-track-transparent hover:scrollbar-thumb-[#C9CCD6]/50 z-0"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          style={{
-            scrollbarWidth: "thin",
-            scrollbarColor: "rgba(201, 204, 214, 0.3) transparent",
-          }}
-        >
-          <motion.div
-            className="flex gap-6 pb-2"
-            animate={{ x: isPaused ? undefined : [0, -1600] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
+      <section id="scrollTargetId" ref={ref} className="relative w-full">
+        <div className="relative z-10 mx-auto max-w-6xl px-6">
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-12 text-center text-2xl md:text-3xl font-semibold"
           >
-            {[...portfolioItems, ...portfolioItems].map((item, index) => (
-              <div
-                key={`${item.id}-${index}`}
-                className="flex-shrink-0 w-72 md:w-96"
+            We also offer VO and Dubbing services
+          </motion.h2>
+
+          {/* 4-Column Grid Layout for Desktop, Horizontal Scroll for Mobile */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="overflow-x-auto lg:overflow-x-visible scrollbar-thin scrollbar-thumb-foreground/20 scrollbar-track-transparent pb-4"
+          >
+            <div className="flex lg:grid lg:grid-cols-4 gap-6 items-center min-w-max lg:min-w-0">
+              {/* Column 1: Priyanshu Emoji */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex items-center justify-center flex-shrink-0"
               >
-                <ExpandableVideoCard
-                  videoUrl={item.videoUrl}
-                  thumbnail={item.thumbnail}
-                  title={item.title}
-                  description={item.description}
-                />
-              </div>
-            ))}
+                <div className="relative w-40 md:w-48">
+                  <img
+                    src="/assets/priyanshu-emoji.webp"
+                    alt="Priyanshu"
+                    className="w-full object-cover rounded-lg border-2 border-foreground/10 shadow-lg"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Columns 2-4: Video Cards */}
+              {featuredVideos.map((video, index) => (
+                <motion.div
+                  key={video.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                  className="flex-shrink-0 w-64 lg:w-auto"
+                >
+                  <YouTubeVideoCard
+                    videoUrl={video.videoUrl}
+                    thumbnail={video.thumbnail}
+                    title={video.title}
+                  />
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-12 flex justify-center"
+          >
+            <a
+              href="https://swarlok.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-8 py-3 rounded-lg font-semibold overflow-hidden transition-all duration-300 hover:scale-105 bg-black dark:bg-black border-2 text-white dark:text-white"
+              style={{ borderColor: "#ac46ff" }}
+            >
+              <span className="relative z-10"></span>
+              {/* Hover overlay - fills with purple */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ backgroundColor: "#ac46ff" }}
+              />
+              <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+                Explore Our Dubbing Services
+              </span>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+    </WavyBackground>
   );
 }

@@ -26,7 +26,7 @@ export default function Footer() {
               © {currentYear} Syzygy. All rights reserved.
             </p>
             <p className="text-xs opacity-60">
-              Process-Driven Video Post Production
+              Clarity over <span className="italic uppercase">chaos</span>
             </p>
           </div>
         </div>

@@ -28,9 +28,15 @@ const Hero = () => {
     <section className="pt-32">
       {!hideMorphText && <MorphingText texts={texts} />}
       {hideMorphText && (
-        <h1 className="text-6xl text-center font-bold tracking-tighter md:text-5xl lg:text-8xl">
-          <AuroraText>Clarity</AuroraText> over <span className="italic uppercase">chaos </span>
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-6xl text-center font-bold tracking-tighter md:text-5xl lg:text-8xl"
+        >
+          <AuroraText>Clarity</AuroraText> over{" "}
+          <span className="italic uppercase">chaos </span>
+        </motion.h1>
       )}
       <p className="text-center text-lg font-medium px-2 text-balance mt-4 max-w-2xl mx-auto">
         SYZYGY. Where raw footage meets the finish line. Reliable, fast, and

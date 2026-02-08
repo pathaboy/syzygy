@@ -6,40 +6,22 @@ import {
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
 import clsx from "clsx";
+import { portfolioItems } from "@/lib/data";
 
-const AUTO_ROTATE_INTERVAL = 3000;
+const AUTO_ROTATE_INTERVAL = 12000;
 
 const DraggableCards = () => {
-  const items = [
-    {
-      title: "Tyler Durden",
-      image:
-        "https://images.unsplash.com/photo-1732310216648-603c0255c000?q=80&w=3540&auto=format&fit=crop",
-      className:
-        "absolute top-16 left-1/2 -translate-x-[60%] rotate-[-4deg] md:left-[38%]",
-    },
-    {
-      title: "The Narrator",
-      image:
-        "https://images.unsplash.com/photo-1697909623564-3dae17f6c20b?q=80&w=2667&auto=format&fit=crop",
-      className:
-        "absolute top-28 left-1/2 -translate-x-[50%] rotate-[-6deg] md:left-[42%]",
-    },
-    {
-      title: "Iceland",
-      image:
-        "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2600&auto=format&fit=crop",
-      className:
-        "absolute top-12 left-1/2 -translate-x-[40%] rotate-[6deg] md:left-[46%]",
-    },
-    {
-      title: "Japan",
-      image:
-        "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=3648&auto=format&fit=crop",
-      className:
-        "absolute top-24 left-1/2 -translate-x-[30%] rotate-[8deg] md:left-[50%]",
-    },
-  ];
+  const items = portfolioItems.slice(0, 4).map((item, index) => ({
+    title: item.title,
+    videoUrl: item.videoUrl,
+    thumbnail: item.thumbnail,
+    className: [
+      "absolute top-16 left-1/2 -translate-x-[60%] rotate-[-4deg] md:left-[38%]",
+      "absolute top-28 left-1/2 -translate-x-[50%] rotate-[-6deg] md:left-[42%]",
+      "absolute top-12 left-1/2 -translate-x-[40%] rotate-[6deg] md:left-[46%]",
+      "absolute top-24 left-1/2 -translate-x-[30%] rotate-[8deg] md:left-[50%]",
+    ][index],
+  }));
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
@@ -67,12 +49,16 @@ const DraggableCards = () => {
               "transition-all duration-500 ease-out",
               isActive
                 ? "z-30 opacity-100 blur-0 scale-100"
-                : "z-10 opacity-45 blur-sm scale-95"
+                : "z-10 opacity-45 blur-sm scale-95",
             )}
           >
-            <img
-              src={item.image}
-              alt={item.title}
+            <video
+              src={item.videoUrl}
+              poster={item.thumbnail}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="pointer-events-none h-72 w-72 rounded-xl object-cover shadow-2xl md:h-80 md:w-80"
             />
           </DraggableCardBody>

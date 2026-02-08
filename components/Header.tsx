@@ -16,7 +16,7 @@ export default function Header() {
             alt="Logo"
             width={200}
             height={150}
-            className="grayscale"
+            className="grayscale max-sm:w-[150px]"
           />
         </Link>
 
