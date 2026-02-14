@@ -8,11 +8,13 @@ import Workflow from "@/components/Workflow"
 import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
 import Dubbing from "@/components/Dubbing"
+import TopHero from "@/components/TopHero"
 
 const App = () => {
   return (
     <main>
       <Header />
+      <TopHero />
       <Hero />
       <Workflow />
       <Tools />

@@ -82,3 +82,51 @@ export const portfolioItems = [
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/when-party-over-sample.mp4",
   },
 ];
+
+export const heroImages = [
+  {
+    id: 1,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-1.jpeg",
+    alt: "medical-1"
+  }, 
+  {
+    id: 2,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-2.jpeg",
+    alt: "medical-2"
+  }, 
+  {
+    id: 3,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-3.jpeg",
+    alt: "medical-3"
+  }, 
+  {
+    id: 4,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-4.jpeg",
+    alt: "medical-4"
+  }, 
+  {
+    id: 5,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-5.jpeg",
+    alt: "medical-5"
+  }, 
+  {
+    id: 6,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-6.jpeg",
+    alt: "medical-6"
+  }, 
+  {
+    id: 7,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-7.jpeg",
+    alt: "medical-7"
+  }, 
+  {
+    id: 8,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-8.jpeg",
+    alt: "medical-8"
+  }, 
+  {
+    id: 9,
+    image: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/medical-9.jpeg",
+    alt: "medical-9"
+  }, 
+]

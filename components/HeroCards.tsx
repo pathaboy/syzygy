@@ -6,15 +6,16 @@ import {
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
 import clsx from "clsx";
-import { portfolioItems } from "@/lib/data";
+import { heroImages } from "@/lib/data";
+import Image from "next/image";
 
-const AUTO_ROTATE_INTERVAL = 12000;
+const AUTO_ROTATE_INTERVAL = 3000;
 
 const DraggableCards = () => {
-  const items = portfolioItems.slice(0, 4).map((item, index) => ({
-    title: item.title,
-    videoUrl: item.videoUrl,
-    thumbnail: item.thumbnail,
+  const items = heroImages.slice(0, 4).map((item, index) => ({
+    id: item.id,
+    image: item.image,
+    alt: item.alt,
     className: [
       "absolute top-16 left-1/2 -translate-x-[60%] rotate-[-4deg] md:left-[38%]",
       "absolute top-28 left-1/2 -translate-x-[50%] rotate-[-6deg] md:left-[42%]",
@@ -24,7 +25,7 @@ const DraggableCards = () => {
   }));
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isInteracting, setIsInteracting] = useState(false);
+  const [isInteracting] = useState(false);
 
   useEffect(() => {
     if (isInteracting) return;
@@ -43,7 +44,7 @@ const DraggableCards = () => {
 
         return (
           <DraggableCardBody
-            key={item.title}
+            key={item.id}
             className={clsx(
               item.className,
               "transition-all duration-500 ease-out",
@@ -52,13 +53,11 @@ const DraggableCards = () => {
                 : "z-10 opacity-45 blur-sm scale-95",
             )}
           >
-            <video
-              src={item.videoUrl}
-              poster={item.thumbnail}
-              autoPlay
-              loop
-              muted
-              playsInline
+            <Image
+              src={item.image}
+              alt={item.alt}
+              width={320}
+              height={320}
               className="pointer-events-none h-72 w-72 rounded-xl object-cover shadow-2xl md:h-80 md:w-80"
             />
           </DraggableCardBody>

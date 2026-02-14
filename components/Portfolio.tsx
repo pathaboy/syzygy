@@ -24,7 +24,7 @@ export default function Portfolio() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 text-center text-3xl font-semibold md:text-4xl"
         >
-          Our Work
+          View Broader Projects
         </motion.h2>
 
         <motion.p
@@ -33,8 +33,7 @@ export default function Portfolio() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto mb-12 px-4 max-w-2xl text-center text-sm opacity-70 md:text-base"
         >
-          A selection of our recent projects showcasing our dedication to
-          quality and storytelling.
+         From instructional content to high-retention short-form, we adapts across niches.
         </motion.p>
 
         {/* Auto-scrolling marquee with horizontal scroll option */}

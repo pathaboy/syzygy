@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { WavyBackground } from "./ui/wavy-background";
 import { X } from "lucide-react";
+import { ShineBorder } from "./ui/shine-border";
 
 // YouTube-style Video Card Component
 function YouTubeVideoCard({
@@ -114,16 +115,17 @@ export default function Dubbing() {
     <WavyBackground
       containerClassName="relative overflow-hidden py-16"
       className="w-full"
-      // colors={["#1a1a1a", "#2d2d2d", "#404040", "#525252", "#666666"]}
       waveWidth={10}
       backgroundFill="transparent"
       blur={10}
       speed="fast"
       waveOpacity={0.3}
     >
-      <section id="scrollTargetId" ref={ref} className="relative w-full">
+      <section id="scrollTargetId" ref={ref} className="relative w-full bg-white/10 py-6 rounded-sm backdrop-blur-sm">
+        <ShineBorder borderWidth={4} shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           {/* Heading */}
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -152,7 +154,7 @@ export default function Dubbing() {
                   <img
                     src="/assets/priyanshu-emoji.webp"
                     alt="Priyanshu"
-                    className="w-full object-cover rounded-lg border-2 border-foreground/10 shadow-lg"
+                    className="w-full object-cover rounded-full border-2 border-foreground/10 shadow-lg"
                   />
                 </div>
               </motion.div>
