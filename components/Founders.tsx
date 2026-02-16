@@ -29,8 +29,8 @@ export default function Founders() {
         {/* Description */}
         <p className="mx-auto mb-16 max-w-xl text-justify text-sm leading-relaxed opacity-80 md:text-base">
           Syzygy was built by{" "}
-          <span className="font-semibold">Priyanshu Srivastava</span> and{" "}
-          <span className="font-semibold">Naveen Patha</span>. College mates
+          <span className="font-semibold">Naveen Patha</span> and{" "} <span className="font-semibold">Priyanshu Srivastava</span> 
+          . College mates
           turned long-term collaborators, with a combined decade of hands-on
           experience in video editing, post-production workflows, and
           execution-heavy projects. That experience has been streamlined into a

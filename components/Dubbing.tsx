@@ -121,11 +121,18 @@ export default function Dubbing() {
       speed="fast"
       waveOpacity={0.3}
     >
-      <section id="scrollTargetId" ref={ref} className="relative w-full bg-white/10 py-6 rounded-sm backdrop-blur-sm">
-        <ShineBorder borderWidth={4} shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+      <section
+        id="scrollTargetId"
+        ref={ref}
+        className="relative w-full bg-white/10 py-6 rounded-sm backdrop-blur-sm"
+      >
+        <ShineBorder
+          borderWidth={4}
+          shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+        />
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           {/* Heading */}
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -144,20 +151,39 @@ export default function Dubbing() {
           >
             <div className="flex lg:grid lg:grid-cols-4 gap-6 items-center min-w-max lg:min-w-0">
               {/* Column 1: Priyanshu Emoji */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex items-center justify-center flex-shrink-0"
+              
+
+              <a
+                href={"https://swarlok.vercel.app"}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Swarlok website"
               >
-                <div className="relative w-40 md:w-48">
-                  <img
-                    src="/assets/priyanshu-emoji.webp"
-                    alt="Priyanshu"
-                    className="w-full object-cover rounded-full border-2 border-foreground/10 shadow-lg"
+                <div className="relative mb-6 h-40 w-40 cursor-pointer transition-transform duration-300 hover:scale-105">
+                  {/* 4px Shining Silver Border */}
+                  <div
+                    className="
+                                    absolute inset-0 rounded-full
+                                    border-[6px]
+                                    border-[#fff]
+                                    transition-all duration-500
+                                    group-hover/founder:shadow-[0_0_25px_rgba(192,192,192,0.8),0_0_45px_rgba(192,192,192,0.5)]
+                                  "
                   />
+
+                  {/* Image */}
+                  <div className="relative h-full w-full rounded-full p-[2px]">
+                    <div className="relative h-full w-full overflow-hidden rounded-full">
+                      <img
+                        src="/assets/priyanshu-emoji.webp"
+                        alt={"Priyanshu"}
+                        
+                        className="object-cover transition-all duration-500"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
+              </a>
 
               {/* Columns 2-4: Video Cards */}
               {featuredVideos.map((video, index) => (

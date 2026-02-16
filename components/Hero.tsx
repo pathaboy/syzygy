@@ -23,7 +23,7 @@ const Hero = () => {
           <span className="italic uppercase">chaos </span>
         </motion.h1>
       
-      <p className="text-center text-lg font-medium px-2 text-balance mt-4 max-w-2xl mx-auto">
+      <p className="text-center text-lg max-sm:text-sm font-medium px-2 text-balance mt-4 max-w-2xl mx-auto">
         SYZYGY. Where raw footage meets the finish line. Reliable, fast, and
         thoughtful video post-production for teams that ship content regularly.
       </p>

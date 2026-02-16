@@ -7,7 +7,7 @@ import Cta from "./Cta";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 bg-gradient-to-b from-black/50 to-transparent backdrop-blur-sm">
       <div className="max-w-[1400px] mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="group">
