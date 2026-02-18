@@ -73,7 +73,7 @@ export default function Founders() {
                         fill
                         className="
                           object-cover
-                          grayscale
+                          sm:grayscale
                           transition-all duration-500
                           group-hover/founder:grayscale-0
                         "

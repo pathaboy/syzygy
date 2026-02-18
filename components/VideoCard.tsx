@@ -58,7 +58,7 @@ export const ExpandableVideoCard: React.FC<Props> = ({
               src={videoUrl}
               className="
                 absolute inset-0 h-full w-full object-cover
-                grayscale contrast-75
+                sm:grayscale sm:contrast-75
                 transition-all duration-500
                 group-hover:grayscale-0
                 group-hover:contrast-100

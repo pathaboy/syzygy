@@ -45,7 +45,7 @@ function ToolIcon({ name, icon }: { name: string; icon: string }) {
         alt={name}
         width={40}
         height={40}
-        className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+        className="w-full h-full object-contain sm:grayscale group-hover:grayscale-0 transition-all duration-300"
       />
     </div>
   );
