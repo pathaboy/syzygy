@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Syzygy",
     images: [
       {
-        url: "https://www.syzygymedia.in/syzygy-og.png",
+        url: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/syzygy-og.png",
         width: 1200,
         height: 630,
         alt: "Syzygy Video Post Production",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Syzygy",
     description:
       "SYZYGY. Where raw footage meets the finish line. Reliable, fast, and thoughtful video post-production for teams that ship content regularly.",
-    images: ["https://www.syzygymedia.in/syzygy-og.png"],
+    images: ["https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/syzygy-og.png"],
   },
 };
 
