@@ -13,6 +13,7 @@ type Props = {
   title: string;
   description: string;
   featured?: boolean;
+  courtesy?: string;
 };
 
 export const ExpandableVideoCard: React.FC<Props> = ({
@@ -21,6 +22,7 @@ export const ExpandableVideoCard: React.FC<Props> = ({
   title,
   description,
   featured = false,
+  courtesy,
 }) => {
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -93,6 +95,13 @@ export const ExpandableVideoCard: React.FC<Props> = ({
                 "
                 preload="metadata"
               />
+
+              {/* Courtesy tag */}
+              {courtesy && (
+                <span className="absolute bottom-3 left-3 z-20 px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider bg-white/15 backdrop-blur-sm border border-white/30 text-white shadow-sm">
+                  Courtesy: {courtesy}
+                </span>
+              )}
 
               {/* Play button overlay */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">

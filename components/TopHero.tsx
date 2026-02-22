@@ -30,7 +30,7 @@ const TopHero = () => {
             />
           </h1>
 
-          <p className="text-center text-black text-2xl max-sm:text-xl text-balance font-medium mt-4 max-w-2xl mx-auto">
+          <p className="text-center text-black text-2xl max-sm:text-xl text-balance font-medium mt-4 max-w-2xl mx-auto leading-tight">
             Built for Medical Professionals Who Educate
           </p>
 
@@ -39,7 +39,7 @@ const TopHero = () => {
             <GlassVideoPlayer src={heroVideo.videoUrl} />
 
             {/* 🔥 Layered Glass Panel */}
-            <div className="relative max-sm:-mt-24">
+            <div className="relative">
               {/* Back ice layer (shadow depth layer) */}
               <div
                 className="absolute inset-0 translate-y-6 scale-[0.97] 

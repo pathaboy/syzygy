@@ -1,4 +1,13 @@
-export const portfolioItems = [
+interface PortfolioItem {
+  id: number;
+  title: string;
+  description: string;
+  videoUrl: string;
+  thumbnail: string;
+  courtesy?: string;
+}
+
+export const portfolioItems: PortfolioItem[] = [
   {
     id: 0,
     title: "How Fiber Affects Your Gut",
@@ -7,6 +16,7 @@ export const portfolioItems = [
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/how-fiber-affects-your-gut.mp4",
     thumbnail:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/how-fiber-affects-your-gut.mp4",
+    courtesy: "TheDiaryofACEO"
   },
   {
     id: 1,
@@ -16,6 +26,7 @@ export const portfolioItems = [
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/for-the-happy-skin-tales.mp4",
     thumbnail:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/syzygy/for-the-happy-skin-tales.mp4",
+    courtesy: "ThehappyskinTales"
   },
   {
     id: 2,

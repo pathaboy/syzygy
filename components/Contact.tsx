@@ -1,46 +1,4 @@
-"use client";
-
-import { useState } from "react";
-
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: "Contact Form",
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ email: "", message: "" });
-        setTimeout(() => setStatus("idle"), 5000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch (error) {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
-  };
 
   const socialLinks = [
     { name: "Instagram", url: "https://instagram.com/syzygy.teams" },
@@ -68,49 +26,6 @@ export default function Contact() {
           For inquiries related to video post production, samples, or workflow
           alignment.
         </p>
-        {/* 
-        <form onSubmit={handleSubmit} className="mb-12 space-y-6">
-          
-          <div className="relative">
-            <input
-              type="email"
-              required
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              placeholder="Your email"
-              className="w-full px-0 py-3 bg-transparent border-b-2 border-foreground/20 focus:border-foreground outline-none transition-all duration-300 text-base placeholder:text-foreground/40 placeholder:text-sm"
-            />
-          </div>
-
-          
-          <div className="relative">
-            <textarea
-              required
-              value={formData.message}
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
-              placeholder="Your message"
-              rows={4}
-              className="w-full px-0 py-3 bg-transparent border-b-2 border-foreground/20 focus:border-foreground outline-none transition-all duration-300 resize-none text-base placeholder:text-foreground/40 placeholder:text-sm"
-            />
-          </div>
-
-         
-          <button
-            type="submit"
-            disabled={status === "loading" || status === "success"}
-            className="w-full py-4 px-6 border-2 border-current rounded-lg font-medium text-sm tracking-wide hover:bg-foreground hover:text-background transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {status === "idle" && "Send Message"}
-            {status === "loading" && "Sending..."}
-            {status === "success" && "Message Sent ✓"}
-            {status === "error" && "Failed. Try Again"}
-          </button>
-        </form> 
-        */}
 
         {/* Email Display */}
         <div className="text-center mb-8">
@@ -122,6 +37,18 @@ export default function Contact() {
             className="text-lg md:text-xl font-medium hover:opacity-70 transition-opacity duration-300"
           >
             syzygy.teams@gmail.com
+          </a>
+        </div>
+        {/* Call Us */}
+        <div className="text-center mb-8">
+          <p className="text-xs uppercase tracking-wider opacity-60 mb-2">
+            Or Call Us At
+          </p>
+          <a
+            href="tel:+919175342316"
+            className="text-lg md:text-xl font-medium hover:opacity-70 transition-opacity duration-300"
+          >
+            +91 91753 42316
           </a>
         </div>
 
@@ -141,19 +68,6 @@ export default function Contact() {
               {link.name}
             </a>
           ))}
-        </div>
-
-        {/* Call Us */}
-        <div className="text-center mt-8">
-          <p className="text-xs uppercase tracking-wider opacity-60 mb-2">
-            Or Call Us At
-          </p>
-          <a
-            href="tel:+919175342316"
-            className="text-lg md:text-xl font-medium hover:opacity-70 transition-opacity duration-300"
-          >
-            +91 91753 42316
-          </a>
         </div>
       </div>
     </section>

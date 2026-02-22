@@ -52,6 +52,7 @@ export default function Portfolio() {
                   title={item.title}
                   description={item.description}
                   featured={index < 2}
+                  courtesy={item.courtesy}
                 />
               </div>
             ))}
