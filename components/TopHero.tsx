@@ -1,7 +1,8 @@
 "use client";
+import { useRef, useState } from "react";
 import { TypingAnimation } from "./ui/typing-animation";
-import DraggableCards from "./HeroCards";
 import { ShineBorder } from "./ui/shine-border";
+import { heroVideo } from "@/lib/data";
 
 const TopHero = () => {
   return (
@@ -34,7 +35,8 @@ const TopHero = () => {
           </p>
 
           <div className="sm:p-4 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:place-items-center">
-            <DraggableCards />
+            {/* 🎬 Glassmorphism Video Player */}
+            <GlassVideoPlayer src={heroVideo.videoUrl} />
 
             {/* 🔥 Layered Glass Panel */}
             <div className="relative max-sm:-mt-24">
@@ -90,12 +92,17 @@ const TopHero = () => {
                   </p>
                   <p className="max-sm:text-sm">
                     You stay in control of medical accuracy, messaging, and
-                    final approval. We align every piece of content with your specialization,
-                    maintaining professional integrity and platform compliance.
+                    final approval. We align every piece of content with your
+                    specialization, maintaining professional integrity and
+                    platform compliance.
                   </p>
-                 
-                  <p className="max-sm:text-sm">You focus on treating patients in real life.</p>
-                  <p className="max-sm:text-sm">We help you communicate consistently on screen.</p>
+
+                  <p className="max-sm:text-sm">
+                    You focus on treating patients in real life.
+                  </p>
+                  <p className="max-sm:text-sm">
+                    We help you communicate consistently on screen.
+                  </p>
                 </div>
               </div>
             </div>
@@ -105,5 +112,157 @@ const TopHero = () => {
     </section>
   );
 };
+
+// ─── Glass Video Player ───────────────────────────────────────────────────────
+function GlassVideoPlayer({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setIsMuted(videoRef.current.muted);
+  };
+
+  return (
+    // Outer glass shell
+    <div
+      className="
+        relative rounded-[28px] p-[3px]
+        bg-gradient-to-br from-white/70 via-white/30 to-white/10
+        shadow-[0_8px_32px_rgba(0,0,0,0.18),0_0_0_1px_rgba(255,255,255,0.6)_inset]
+        backdrop-blur-[2px]
+        w-full max-w-[28rem] self-start
+      "
+    >
+      {/* Inner frosted container */}
+      <div
+        className="
+          relative overflow-hidden rounded-[26px]
+          bg-white/20
+          backdrop-blur-[24px]
+          backdrop-saturate-[180%]
+          border border-white/60
+          shadow-[0_0_60px_rgba(255,255,255,0.5)_inset]
+          p-3
+        "
+      >
+        {/* Gloss highlight sweep */}
+        <div
+          className="
+            pointer-events-none absolute inset-0 z-10 rounded-[26px]
+            bg-gradient-to-br from-white/50 via-transparent to-transparent
+          "
+        />
+
+        {/* Video + overlaid controls */}
+        <div className="group relative rounded-[20px] overflow-hidden">
+          <video
+            ref={videoRef}
+            src={src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full rounded-[20px] object-cover block shadow-sm"
+          />
+
+          {/* Centered play/pause — fades in on hover, inspired by Portfolio cards */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button
+              onClick={togglePlay}
+              aria-label={isPlaying ? "Pause" : "Play"}
+              className="bg-white/80 hover:bg-white rounded-full p-4 shadow-lg backdrop-blur-sm transition-all duration-200 active:scale-90 text-gray-900"
+            >
+              {isPlaying ? (
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <rect x="5" y="4" width="4" height="16" rx="1.5" />
+                  <rect x="15" y="4" width="4" height="16" rx="1.5" />
+                </svg>
+              ) : (
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5.14v14l11-7-11-7z" />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Mute pill — pinned bottom-right, always subtly visible */}
+          <button
+            onClick={toggleMute}
+            aria-label={isMuted ? "Unmute" : "Mute"}
+            className="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/30 hover:bg-black/50 backdrop-blur-md text-white text-[11px] font-medium border border-white/20 transition-all duration-200 active:scale-95"
+          >
+            {isMuted ? (
+              <>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M3 9v6h4l5 5V4L7 9H3z" />
+                  <line
+                    x1="23"
+                    y1="9"
+                    x2="17"
+                    y2="15"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="17"
+                    y1="9"
+                    x2="23"
+                    y2="15"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span>Muted</span>
+              </>
+            ) : (
+              <>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                </svg>
+                <span>Live</span>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default TopHero;

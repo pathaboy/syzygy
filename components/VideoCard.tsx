@@ -12,6 +12,7 @@ type Props = {
   thumbnail: string;
   title: string;
   description: string;
+  featured?: boolean;
 };
 
 export const ExpandableVideoCard: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const ExpandableVideoCard: React.FC<Props> = ({
   thumbnail,
   title,
   description,
+  featured = false,
 }) => {
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -32,57 +34,82 @@ export const ExpandableVideoCard: React.FC<Props> = ({
 
   return (
     <>
-      {/* Preview Card - Thumbnail Only in 4:3 */}
-      <CometCard>
-        <button
-          type="button"
-          onClick={() => setActive(true)}
-          className="
-            relative group my-4
-            w-full
-            rounded-[16px]
-            bg-[#1F2121]
-            border border-[#C9CCD6]/30
-            p-1.5 md:p-2
-            transition-all duration-300
-            hover:border-[#C9CCD6]/60
-            active:scale-95
-          "
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+      {/* Preview Card */}
+      {/* Featured: wrapped in glowing gradient ring */}
+      <div
+        className={`
+          relative my-4
+          ${
+            featured
+              ? "rounded-[20px] p-[2px] bg-gradient-to-br from-[#A07CFE] via-[#FE8FB5] to-[#FFBE7B] shadow-[0_0_24px_4px_rgba(160,124,254,0.45)]"
+              : ""
+          }
+        `}
+      >
+        <CometCard>
+          <button
+            type="button"
+            onClick={() => setActive(true)}
+            className={`
+              relative group
+              w-full
+              rounded-[16px]
+              bg-[#1F2121]
+              border
+              ${
+                featured
+                  ? "border-transparent"
+                  : "border-[#C9CCD6]/30 hover:border-[#C9CCD6]/60"
+              }
+              p-1.5 md:p-2
+              transition-all duration-300
+              active:scale-95
+            `}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {!featured && (
+              <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+            )}
 
-          {/* 4:3 Thumbnail - First frame of video */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[12px] md:rounded-[14px]">
-            <video
-              src={videoUrl}
-              className="
-                absolute inset-0 h-full w-full object-cover
-                sm:grayscale sm:contrast-75
-                transition-all duration-500
-                group-hover:grayscale-0
-                group-hover:contrast-100
-                group-hover:scale-[1.03]
-                group-active:scale-100
-              "
-              preload="metadata"
-            />
+            {/* Featured badge */}
+            {featured && (
+              <span className="absolute top-3 left-3 z-20 px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-white/15 backdrop-blur-sm border border-white/30 text-white shadow-sm">
+                ✦ Featured
+              </span>
+            )}
 
-            {/* Play button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
-              <div className="bg-white/90 rounded-full p-3 md:p-4">
-                <svg
-                  className="w-8 h-8 md:w-10 md:h-10 text-black"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+            {/* 4:3 Thumbnail */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[12px] md:rounded-[14px]">
+              <video
+                src={videoUrl}
+                className="
+                  absolute inset-0 h-full w-full object-cover
+                  sm:grayscale sm:contrast-75
+                  transition-all duration-500
+                  group-hover:grayscale-0
+                  group-hover:contrast-100
+                  group-hover:scale-[1.03]
+                  group-active:scale-100
+                "
+                preload="metadata"
+              />
+
+              {/* Play button overlay */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
+                <div className="bg-white/90 rounded-full p-3 md:p-4">
+                  <svg
+                    className="w-8 h-8 md:w-10 md:h-10 text-black"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-        </button>
-      </CometCard>
+          </button>
+        </CometCard>
+      </div>
 
       {/* Modal */}
       {typeof window !== "undefined" &&
