@@ -2,8 +2,21 @@
 import { AuroraText } from "@/components/ui/aurora-text";
 import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import DraggableCards from "./HeroCards";
+import { MorphingText } from "@/components/ui/morphing-text";
+
+const texts = ["Clarity", "over", "chaos"];
 
 const Hero = () => {
+  const [hideMorphText, setHideMorphText] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHideMorphText(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToPortfolio = () => {
     const el = document.getElementById("scrollTargetId");
@@ -13,6 +26,8 @@ const Hero = () => {
 
   return (
     <section className="pt-32">
+      {!hideMorphText && <MorphingText texts={texts} />}
+      {hideMorphText && (
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -22,17 +37,18 @@ const Hero = () => {
           <AuroraText>Clarity</AuroraText> over{" "}
           <span className="italic uppercase">chaos </span>
         </motion.h1>
-      
+      )}
       <p className="text-center text-lg max-sm:text-sm font-medium px-2 text-balance mt-4 max-w-2xl mx-auto">
         SYZYGY. Where raw footage meets the finish line. Reliable, fast, and
         thoughtful video post-production for teams that ship content regularly.
       </p>
+      <DraggableCards />
       <motion.button
         onClick={scrollToPortfolio}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
-        className="group mt-10 mx-auto flex flex-col items-center gap-2 text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition"
+        className="group mx-auto flex flex-col items-center gap-2 text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition"
         aria-label="Scroll to portfolio"
       >
         <span>View Work</span>
