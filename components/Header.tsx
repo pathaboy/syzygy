@@ -17,6 +17,7 @@ export default function Header() {
             width={200}
             height={150}
             className="grayscale max-sm:w-[150px]"
+            unoptimized
           />
         </Link>
 

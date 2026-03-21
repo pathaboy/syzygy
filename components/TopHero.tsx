@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import { TypingAnimation } from "./ui/typing-animation";
 import { ShineBorder } from "./ui/shine-border";
-import { heroVideo } from "@/lib/data";
+import { heroVideos } from "@/lib/data";
 
 const TopHero = () => {
   return (
@@ -36,7 +36,7 @@ const TopHero = () => {
 
           <div className="sm:p-4 mt-4 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:place-items-center">
             {/* 🎬 Glassmorphism Video Player */}
-            <GlassVideoPlayer src={heroVideo.videoUrl} />
+            <GlassVideoPlayer src={heroVideos[0].videoUrl} />
 
             {/* 🔥 Layered Glass Panel */}
             <div className="relative">
@@ -114,7 +114,15 @@ const TopHero = () => {
 };
 
 // ─── Glass Video Player ───────────────────────────────────────────────────────
-function GlassVideoPlayer({ src }: { src: string }) {
+export function GlassVideoPlayer({
+  src,
+  onEnded,
+  loop = true,
+}: {
+  src: string;
+  onEnded?: () => void;
+  loop?: boolean;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -140,11 +148,12 @@ function GlassVideoPlayer({ src }: { src: string }) {
     // Outer glass shell
     <div
       className="
-        relative rounded-[28px] p-[3px]
+        relative rounded-[28px] p-[2px]
         bg-gradient-to-br from-white/70 via-white/30 to-white/10
         shadow-[0_8px_32px_rgba(0,0,0,0.18),0_0_0_1px_rgba(255,255,255,0.6)_inset]
         backdrop-blur-[2px]
         w-full max-w-[28rem] self-start
+        
       "
     >
       {/* Inner frosted container */}
@@ -156,7 +165,7 @@ function GlassVideoPlayer({ src }: { src: string }) {
           backdrop-saturate-[180%]
           border border-white/60
           shadow-[0_0_60px_rgba(255,255,255,0.5)_inset]
-          p-3
+          p-2
         "
       >
         {/* Gloss highlight sweep */}
@@ -173,10 +182,11 @@ function GlassVideoPlayer({ src }: { src: string }) {
             ref={videoRef}
             src={src}
             autoPlay
-            loop
+            loop={loop}
             muted
             playsInline
-            className="w-full rounded-[20px] object-cover block shadow-sm"
+            onEnded={onEnded}
+            className="w-full rounded-[20px] aspect-square object-cover block shadow-sm"
           />
 
           {/* Centered play/pause — fades in on hover, inspired by Portfolio cards */}

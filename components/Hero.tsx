@@ -3,8 +3,9 @@ import { AuroraText } from "@/components/ui/aurora-text";
 import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import DraggableCards from "./HeroCards";
 import { MorphingText } from "@/components/ui/morphing-text";
+import StackedVideoPlayer from "./StackedVideoPlayer";
+import { heroVideos, portfolioItems } from "@/lib/data";
 
 const texts = ["Clarity", "over", "chaos"];
 
@@ -42,7 +43,9 @@ const Hero = () => {
         SYZYGY. Where raw footage meets the finish line. Reliable, fast, and
         thoughtful video post-production for teams that ship content regularly.
       </p>
-      <DraggableCards />
+      <div className="py-8 flex justify-center">
+        <StackedVideoPlayer videoUrls={heroVideos} />
+      </div>
       <motion.button
         onClick={scrollToPortfolio}
         initial={{ opacity: 0, y: 10 }}

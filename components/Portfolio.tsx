@@ -51,7 +51,7 @@ export default function Portfolio() {
                   thumbnail={item.thumbnail}
                   title={item.title}
                   description={item.description}
-                  featured={index < 2}
+                  featured={index < 1}
                   courtesy={item.courtesy}
                 />
               </div>
